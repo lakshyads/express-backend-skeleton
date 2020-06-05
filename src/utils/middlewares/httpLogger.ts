@@ -112,16 +112,17 @@ const logResponse = (req: Request, res: Response, startTimer?: [number, number],
         const resEndStatus = res.statusCode;
         const resEndMessage = res.statusMessage;
         newLine();
-        log(`${chalk.cyanBright.bold.underline(`Response sent`)}: [${chalk.grey(`${resEndStatus} - ${resEndMessage}`)}] ${startTimer ? chalk.red(getActualDurationInMilliseconds(startTimer).toLocaleString()) : ''}`);
-        newLine();
+        const resEndTime = startTimer ? getActualDurationInMilliseconds(startTimer).toLocaleString() + ' ms' : '';
         log(`${chalk.magenta.bold(`(?) Response spec`)} = `, {
             route: `${req?.method} ${req?.path}`,
             response_status: `${resEndStatus} - ${resEndMessage}`,
             server_response_health: `${resHealthStatus} - ${resHealthMessage}`,
             response_send_timeStamp: dateTimeStamp(),
-            responseTime: startTimer ? getActualDurationInMilliseconds(startTimer).toLocaleString() + "ms" : 'not logged',
+            responseTime: startTimer ? resEndTime : 'not logged',
             body: showBody ? body ?? '' : 'not logged',
         });
+        newLine();
+        log(`${chalk.cyanBright.bold.underline(`Response sent`)}: [${chalk.grey(`${resEndStatus} - ${resEndMessage}`)}] ${startTimer ? chalk.red(resEndTime) : ''}`);
         newLine();
         horizontalRule();
     });
