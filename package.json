@@ -7,7 +7,7 @@
     "tst": "tsc",
     "start": "npm run dev",
     "dev": "ts-node-dev --respawn --transpileOnly  ./src/server.ts",
-    "dev:debug" : "ts-node-dev --transpileOnly --respawn --debug ./src/server.ts",
+    "dev:debug": "ts-node-dev --transpileOnly --respawn --debug ./src/server.ts",
     "prod": "tsc && node ./dist/index.js",
     "build": "tsc -p",
     "health-check": "ts-node-dev ./src/utils/healthCheck.ts"

@@ -6,7 +6,7 @@ export const doLogRequest: boolean = true;
 /** Logs Http response if true */
 export const doLogResponse: boolean = true;
 
-/** Http log options */
+/** Http log default options */
 const httpLoggerOptions: httpLogOptions = {
     showBody: false,
     showCookies: true,

@@ -23,11 +23,10 @@ export interface httpLogOptions {
     showCookies?: boolean,
 }
 
-/** Middleware for logging requests to server
+/** Middleware for logging requests to server. Use `config/httpLoggerConfig` for customizing logging options.
  * @param req Express request
  * @param res Express Response
  * @param next Express next funciton
- * @param logHeaders Default is false.
  */
 const logHttp = (req: Request, res: Response, next: NextFunction) => {
     // for response time
@@ -55,7 +54,7 @@ const logHttp = (req: Request, res: Response, next: NextFunction) => {
 /**
  * Logs express request
  * @param req Express request
- * @param options  httpLogOptions
+ * @param options  httpLogOptions. Default = `{ showBody = true, showSession = true, showHeaders = true, showCookies = true }`
  * @param message Optional message
  */
 const logRequest = (req: Request, { showBody = true, showSession = true, showHeaders = true, showCookies = true }: httpLogOptions = {}, message?: string | null,) => {
@@ -80,7 +79,9 @@ const logRequest = (req: Request, { showBody = true, showSession = true, showHea
 /** Logs express response on finish
  * @param req Express request
  * @param res Express response
-*/
+ * @param startTimer Start time to calculate response duration from. [use - `process.hrtime()` - to obtain time in milliseconds]
+ * @param showBody Show content sent in response. Default is true
+ */
 const logResponse = (req: Request, res: Response, startTimer?: [number, number], showBody: boolean = true) => {
     const resHealthStatus = res.statusCode, resHealthMessage = res.statusMessage ?? 'Healthy';//= { res.statusCode, res.statusMessage ?? 'Healthy' };
 

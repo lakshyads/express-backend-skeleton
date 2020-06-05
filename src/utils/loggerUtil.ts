@@ -20,9 +20,9 @@ const log = (message: string, ...data: any) => {
 };
 
 /** Logs info
+ * @param title  Title for info
  * @param message Message to log 
- * @param title Optional title for message
- * @param data Optional data to log
+ * @param data Data to log
  */
 const logInfo = (title: string, message: string, ...data: any) => {
     newLine();
@@ -30,9 +30,9 @@ const logInfo = (title: string, message: string, ...data: any) => {
 };
 
 /** Logs Error
+ * @param title Title for error
  * @param message Message to log
  * @param data Optional data to log
- * @param req Express request
  */
 const logError = (title: string, message: string, data?: any,) => {
     newLine();
@@ -49,6 +49,7 @@ const newLine = () => {
     console.log('\n');
 }
 
+/** Logs a horizontal rule */
 const horizontalRule = () => {
     log(chalk.bold('---------------------------------------------------------------------------------------------------------------------------------------------------'));
 }
