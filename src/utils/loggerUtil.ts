@@ -26,7 +26,8 @@ const log = (message: string, ...data: any) => {
  */
 const logInfo = (title: string, message: string, ...data: any) => {
     newLine();
-    console.info(`${chalk.blue(`[i] Info = `)}`, { title: title, message: message, data: data ?? '', timeStamp: dateTimeStamp() });
+    console.info(`${chalk.blue.bold(`[i] Info = `)}`, { title: title, message: message, data: data ?? '', timeStamp: dateTimeStamp() });
+    newLine();
 };
 
 /** Logs Error
@@ -42,6 +43,7 @@ const logError = (title: string, message: string, data?: any,) => {
         data: data ?? 'null',
         timeStamp: dateTimeStamp(),
     });
+    newLine();
 };
 
 /** Logs a new empty line */

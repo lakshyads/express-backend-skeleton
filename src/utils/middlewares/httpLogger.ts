@@ -119,8 +119,11 @@ const logResponse = (req: Request, res: Response, startTimer?: [number, number],
             server_response_health: `${resHealthStatus} - ${resHealthMessage}`,
             response_send_timeStamp: dateTimeStamp(),
             responseTime: startTimer ? resEndTime : 'not logged',
-            body: showBody ? body ?? '' : 'not logged',
+            // body: showBody ? body ?? '' : 'not logged',
         });
+        newLine();
+        log(`${chalk.black.bold(`[B] Response body = [[`)}\n`, showBody ? body ?? '' : 'not logged');
+        log(chalk.black.bold(']]'));
         newLine();
         log(`${chalk.cyanBright.bold.underline(`Response sent`)}: [${chalk.grey(`${resEndStatus} - ${resEndMessage}`)}] ${startTimer ? chalk.red(resEndTime) : ''}`);
         newLine();
